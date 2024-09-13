@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <robot name="ldsc_bipedal" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym/resources/robots/ldsc_bipedal/urdf/materials.xacro" />
-<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym/resources/robots/ldsc_bipedal/urdf/bipedal_floating.trans" />
-<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym/resources/robots/ldsc_bipedal/urdf/bipedal_floating.gazebo" />
+<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym_ldsc/resources/robots/ldsc_bipedal/urdf/materials.xacro" />
+<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym_ldsc/resources/robots/ldsc_bipedal/urdf/bipedal_floating.trans" />
+<xacro:include filename="/home/ldsc/chuweihuang/src/legged_gym_ldsc/resources/robots/ldsc_bipedal/urdf/bipedal_floating.gazebo" />
 
 
 <link name="pelvis_link"/>
