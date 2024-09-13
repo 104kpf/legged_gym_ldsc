@@ -9,7 +9,7 @@ gym = gymapi.acquire_gym()
 # 创建仿真
 sim_params = gymapi.SimParams()
 sim_params.up_axis = gymapi.UP_AXIS_Z
-sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.8)
+sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.81)
 sim = gym.create_sim(0, 0, gymapi.SIM_PHYSX, sim_params)
 
 # 加载机器人URDF
@@ -24,25 +24,29 @@ robot_asset = gym.load_asset(sim, asset_root, asset_file, asset_options)
 # 创建环境
 env = gym.create_env(sim, gymapi.Vec3(-1, -1, 0), gymapi.Vec3(1, 1, 1), 1)
 
+plane_params = gymapi.PlaneParams()
+plane_params.normal = gymapi.Vec3(0, 0, 1)  # 设置地面法线方向为z轴正方向
+gym.add_ground(sim, plane_params)
+
 # 创建机器人
 pose = gymapi.Transform()
-pose.p = gymapi.Vec3(0.0, 0.0, 1.0)  # 将机器人放置在地面上方1米处
+pose.p = gymapi.Vec3(0.0, 0.0, -0.02)  
 robot_handle = gym.create_actor(env, robot_asset, pose, "robot", 0, 1)
 
 # 设置初始关节角度
 initial_joint_positions = {
-    'L_Hip_Yaw': 0.0537,
-    'L_Hip_Roll': 0.0322,
+    'L_Hip_Yaw': -0.0537,
+    'L_Hip_Roll': -0.0322,
     'L_Hip_Pitch': -0.3383,
     'L_Knee_Pitch': 0.6350,
-    'L_Ankle_Pitch': -0.3312,
-    'L_Ankle_Roll': 0.0,
+    'L_Ankle_Pitch': -0.2906,
+    'L_Ankle_Roll': 0.0269,
     'R_Hip_Yaw': 0.0537,
     'R_Hip_Roll': 0.0322,
     'R_Hip_Pitch': -0.3383,
     'R_Knee_Pitch': 0.6350,
-    'R_Ankle_Pitch': -0.3312,
-    'R_Ankle_Roll': 0.0
+    'R_Ankle_Pitch': -0.2906,
+    'R_Ankle_Roll': -0.0269
 }
 
 # 直接设置关节角度
