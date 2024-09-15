@@ -38,7 +38,8 @@ from .anymal_b.anymal_b_config import AnymalBRoughCfg, AnymalBRoughCfgPPO
 from .cassie.cassie import Cassie
 from .cassie.cassie_config import CassieRoughCfg, CassieRoughCfgPPO
 from .a1.a1_config import A1RoughCfg, A1RoughCfgPPO
-
+from .ldsc_bipedal.ldsc_bipedal import ldsc_bipedal
+from .ldsc_bipedal.ldsc_bipedal_config import LdscRoughCfg, LdscRoughCfgPPO
 
 import os
 
@@ -49,3 +50,4 @@ task_registry.register( "anymal_c_flat", Anymal, AnymalCFlatCfg(), AnymalCFlatCf
 task_registry.register( "anymal_b", Anymal, AnymalBRoughCfg(), AnymalBRoughCfgPPO() )
 task_registry.register( "a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO() )
 task_registry.register( "cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO() )
+task_registry.register( "ldsc_bipedal", ldsc_bipedal, LdscRoughCfg(), LdscRoughCfgPPO() )

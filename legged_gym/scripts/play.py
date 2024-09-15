@@ -41,6 +41,16 @@ import torch
 
 def play(args):
     env_cfg, train_cfg = task_registry.get_cfgs(name=args.task)
+    
+    # 修改实验名称和模型文件名
+    train_cfg.runner.experiment_name = "rough_ldsc_bipedal"
+    train_cfg.runner.load_run = "Sep15_15-41-27_ldsc_bipedal"
+    train_cfg.runner.checkpoint = "900"
+    
+    # 修改 LEGGED_GYM_ROOT_DIR 为你的项目根目录
+    global LEGGED_GYM_ROOT_DIR
+    LEGGED_GYM_ROOT_DIR = "/home/ldsc/chuweihuang/src/legged_gym_ldsc"
+    
     # override some parameters for testing
     env_cfg.env.num_envs = min(env_cfg.env.num_envs, 50)
     env_cfg.terrain.num_rows = 5
